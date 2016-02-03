@@ -1,16 +1,25 @@
 {
   "title": "GM Permissive",
   "name": "gmpermissive",
+  "id": "gmpermissive@cssu.in",
   "version": "0.0.1",
   "description": "Patches Greasemonkey to work on other URI schemes",
   "main": "index.js",
   "author": "Marcii <marcii@cssu.in>",
-  "preferences": [{
-    "title": "about: URIs",
-    "name": "aboutIsGreaseable",
-    "description": "Allows scripts to run on about: scheme URIs",
-    "type": "bool"
-  }],
+  "preferences": [
+    {
+      "title": "about: URIs",
+      "name": "aboutIsGreaseable",
+      "description": "Allows scripts to run on about: scheme URIs",
+      "type": "bool"
+    },
+    {
+      "title": "chrome:// URIs",
+      "name": "chromeIsGreaseable",
+      "description": "Allows scripts to run on chrome:// scheme URIs",
+      "type": "bool"
+    }
+  ],
   "preferences-branch": "greasemonkey",
   "engines": {
     "firefox": ">=38.0a1"
