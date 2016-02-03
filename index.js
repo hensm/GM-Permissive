@@ -86,7 +86,7 @@ function startup() {
 				AbstractScript_global = Cu.getGlobalForObject(gm_imports.AbstractScript);
 				replace();
 			} else {
-
+				// TODO: Notify about GM dependency
 			}
 		});
 	});
