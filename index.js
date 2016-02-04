@@ -4,6 +4,7 @@ const { AddonManager } = require("resource://gre/modules/AddonManager.jsm");
 
 const tabs = require("sdk/tabs");
 const prefs_service = require("sdk/preferences/service");
+const notifications = require("sdk/notifications");
 
 
 let GM_INSTALLED = false;
@@ -86,13 +87,20 @@ function startup() {
 				AbstractScript_global = Cu.getGlobalForObject(gm_imports.AbstractScript);
 				replace();
 			} else {
-				// TODO: Notify about GM dependency
+				let notification = notifications.notify({
+					title: "Dependency not found!",
+					text: "This addon depends on Greasemonkey, click here to download.",
+					data: "https://addons.mozilla.org/firefox/addon/greasemonkey/",
+					onClick: function(data) {
+						tabs.open(data);
+					}
+				});
 			}
 		});
 	});
 }
 function shutdown() {
-	if(GM_INSTALLED) {
+	if (GM_INSTALLED) {
 		restore();
 	}
 }
