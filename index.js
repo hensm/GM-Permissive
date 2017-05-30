@@ -29,6 +29,8 @@ function replace() {
 			case "https":
 			case "ftp":
 				return true;
+			case "data":
+				return gm_imports.GM_prefRoot.getValue('dataIsGreaseable');
 			case "file":
 				return gm_imports.GM_prefRoot.getValue("fileIsGreaseable");
 			case "unmht":
