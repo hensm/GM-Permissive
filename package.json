@@ -25,6 +25,9 @@
     "firefox": ">=38.0a1"
   },
   "license": "MIT",
+  "permissions": {
+    "multiprocess": true
+  },
   "keywords": [
     "jetpack"
   ]
