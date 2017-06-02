@@ -70,35 +70,29 @@ function restore(reason) {
 
 
 function startup() {
-	// Replace existing addon
-	AddonManager.getAddonByID("@gmpermissive", function(addon) {
-		if (addon !== null) {
-			addon.uninstall();
-		}
 
 		// Check for Greasemonkey
-		AddonManager.getAddonByID(
-				"{e4a8a97b-f2ed-450b-b12d-ee082ba24781}", function(addon) {
-			if (addon !== null) {
-				GM_INSTALLED = true;
+	AddonManager.getAddonByID(
+			"{e4a8a97b-f2ed-450b-b12d-ee082ba24781}", function(addon) {
+		if (addon !== null) {
+			GM_INSTALLED = true;
 
-				// GM imports
-				Cu.import("chrome://greasemonkey-modules/content/util.js", gm_imports);
-				Cu.import("chrome://greasemonkey-modules/content/prefmanager.js", gm_imports);
-				Cu.import("chrome://greasemonkey-modules/content/abstractScript.js", gm_imports);
-				AbstractScript_global = Cu.getGlobalForObject(gm_imports.AbstractScript);
-				replace();
-			} else {
-				let notification = notifications.notify({
-					title: "Dependency not found!",
-					text: "This addon depends on Greasemonkey, click here to download.",
-					data: "https://addons.mozilla.org/firefox/addon/greasemonkey/",
-					onClick: function(data) {
-						tabs.open(data);
-					}
-				});
-			}
-		});
+			// GM imports
+			Cu.import("chrome://greasemonkey-modules/content/util.js", gm_imports);
+			Cu.import("chrome://greasemonkey-modules/content/prefmanager.js", gm_imports);
+			Cu.import("chrome://greasemonkey-modules/content/abstractScript.js", gm_imports);
+			AbstractScript_global = Cu.getGlobalForObject(gm_imports.AbstractScript);
+			replace();
+		} else {
+			let notification = notifications.notify({
+				title: "Dependency not found!",
+				text: "This addon depends on Greasemonkey, click here to download.",
+				data: "https://addons.mozilla.org/firefox/addon/greasemonkey/",
+				onClick: function(data) {
+					tabs.open(data);
+				}
+			});
+		}
 	});
 }
 function shutdown() {

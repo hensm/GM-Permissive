@@ -1,7 +1,7 @@
 {
   "title": "GM Permissive",
   "name": "gmpermissive",
-  "id": "gmpermissive@cssu.in",
+  "id": "@gmpermissive",
   "version": "0.0.2",
   "description": "Patches Greasemonkey to work on other URI schemes",
   "main": "index.js",
